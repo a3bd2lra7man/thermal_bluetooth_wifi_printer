@@ -20,6 +20,12 @@ class WifiPrinter extends Printer {
     try {
       _socket = await Socket.connect(ip, port ?? 9100, timeout: timeout);
       _socket?.add(generator.reset());
+      _socket?.listen(
+        (event) {},
+        onDone: () {
+          _socket = null;
+        },
+      );
       return true;
     } catch (e) {
       print(e);
