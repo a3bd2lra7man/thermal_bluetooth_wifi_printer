@@ -1,6 +1,6 @@
 name: thermal_bluetooth_wifi_printer
 description: Thermal Printer plugin for flutter (wifi,bluetooth)
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:

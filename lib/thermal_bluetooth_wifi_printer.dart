@@ -2,9 +2,7 @@ import 'dart:io';
 import 'package:flutter_esc_pos_utils/flutter_esc_pos_utils.dart';
 import 'package:print_bluetooth_thermal/print_bluetooth_thermal.dart';
 
-import 'device/printer.dart';
-
-
+import 'printer/printer.dart';
 
 class WifiPrinter extends Printer {
   final String ip;
@@ -15,7 +13,7 @@ class WifiPrinter extends Printer {
     return (await printer.initialize(printer, paperSize)) as WifiPrinter;
   }
 
-  WifiPrinter._(this.ip);
+  WifiPrinter._(this.ip) : super(ip);
 
   @override
   Future<bool> connect({int? port, Duration timeout = const Duration(seconds: 5)}) async {
@@ -44,12 +42,7 @@ class WifiPrinter extends Printer {
   Future<void> printBytes(List<int> ticket) async {
     _socket?.add(ticket);
   }
-
-
 }
-
-
-
 
 class BluetoothPrinter extends Printer {
   final String macAddress;
@@ -59,7 +52,7 @@ class BluetoothPrinter extends Printer {
     return (await printer.initialize(printer, paperSize)) as BluetoothPrinter;
   }
 
-  BluetoothPrinter._(this.macAddress);
+  BluetoothPrinter._(this.macAddress) : super(macAddress);
 
   @override
   Future<bool> connect() async {

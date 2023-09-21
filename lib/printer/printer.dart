@@ -1,11 +1,13 @@
 import 'package:flutter_esc_pos_utils/flutter_esc_pos_utils.dart';
 import 'package:image/image.dart' as img;
 
-
 abstract class Printer {
+  final String id;
   late final PaperSize paperSize;
   late CapabilityProfile profile;
   late Generator generator;
+
+  Printer(this.id);
 
   Future<Printer> initialize(Printer printer, PaperSize paperSize) async {
     printer.profile = await CapabilityProfile.load();
@@ -50,6 +52,4 @@ abstract class Printer {
   void feed(int n) {
     printBytes(generator.emptyLines(n));
   }
-
 }
-
