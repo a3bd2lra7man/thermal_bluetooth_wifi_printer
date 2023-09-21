@@ -6,7 +6,7 @@ import 'printer/printer.dart';
 
 class WifiPrinter extends Printer {
   final String ip;
-  late Socket? _socket;
+  Socket? _socket;
 
   static Future<WifiPrinter> init({required String ip, required PaperSize paperSize}) async {
     var printer = WifiPrinter._(ip);
